@@ -8,7 +8,7 @@
 
 import UIKit
 
-public final class CellRange {
+@MainActor public final class CellRange {
     public let from: Location
     public let to: Location
 
@@ -48,7 +48,7 @@ public final class CellRange {
     }
 }
 
-extension CellRange: Hashable {
+extension CellRange: @MainActor Hashable {
     public func hash(into hasher: inout Hasher) {
         hasher.combine(from)
     }
@@ -58,7 +58,7 @@ extension CellRange: Hashable {
     }
 }
 
-extension CellRange: CustomStringConvertible, CustomDebugStringConvertible {
+extension CellRange: @MainActor CustomStringConvertible, @MainActor CustomDebugStringConvertible {
     public var description: String {
         return "R\(from.row)C\(from.column):R\(to.row)C\(to.column)"
     }
